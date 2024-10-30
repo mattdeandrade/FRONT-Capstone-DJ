@@ -1,0 +1,85 @@
+:root {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #5d5a5a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nav {
+  position: absolute;
+  left: 0px;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  background-image: linear-gradient(10deg, #af40ff, #5b42f3 50%, #c159d6);
+
+  padding-top: 15px;
+}
+
+.Navbar1 {
+  margin-left: 10px;
+}
+
+.Navbar2 {
+  padding: 5px;
+  border-radius: 25px;
+  background: rgb(181, 13, 172);
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    to right,
+    rgb(200, 21, 220) 0%,
+    rgb(200, 21, 220) 50%,
+    rgb(220, 20, 242) 50%,
+    rgb(220, 20, 242) 100%
+  );
+}
+.Navbar3 {
+  border: 2px solid rgb(181, 13, 172);
+  border-style: groove;
+}
+.Navbar4 {
+  border: 2px solid rgb(181, 13, 172);
+  border-style: groove;
+}
+
+a {
+  font-weight: 500;
+  color: #dedee4;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #09d896;
+}
+
+button:hover {
+  border-color: #25d488;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #74ffae;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

@@ -1,6 +1,7 @@
 //import { useGetTracksQuery } from "./trackSlice";
 //import { useGetTrackQuery } from "./trackSlice";
 //import { AddTrack } from "./AddTrack";
+import { EditTrack } from "./EditTrack.jsx";
 import { DeleteTrack } from "./DeleteTrack.jsx";
 import { useSelector } from "react-redux";
 //import { selectToken } from "../account/authSlice";
@@ -19,8 +20,9 @@ export function TrackList() {
       name: "Bodak Yellow",
       artist: "Cardi B",
       album: "Invasion of Privacy",
+      duration: "3:54",
     },
-    { id: 2, name: "Hello", artist: "Adele", album: "25" },
+    { id: 2, name: "Hello", artist: "Adele", album: "25", duration: "6:07" },
   ];
   const [selectedTrackId, setSelectedTrackId] = useState("");
   /**   if (isLoading) {
@@ -45,6 +47,8 @@ export function TrackList() {
             <th>Artist</th>
             <th>Album</th>
             <th>Duration</th>
+            <td>Edit</td>
+            <td>Delete</td>
           </tr>
 
           {tracks.map((song) => (
@@ -53,6 +57,8 @@ export function TrackList() {
 
               <td className="box">{song.artist}</td>
               <td className="box"> {song.album}</td>
+              <td className="box">{song.duration}</td>
+              <td>{<EditTrack />}</td>
               <td>{<DeleteTrack />}</td>
             </tr>
           ))}
