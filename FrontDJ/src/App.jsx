@@ -5,6 +5,7 @@ import "./layout/table.css";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./layout/Root.jsx";
 import Navbar from "./layout/Navbar.jsx";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -12,13 +13,15 @@ export const router = createBrowserRouter([
     children: [
       // { index: true, element: <DepartmentList /> },
       // { path: "/playlists", element: <PlayLists /> },
+
       //  { path: "/login", element: <AuthForm /> },
+
       { path: "/tracks", element: <TrackList /> },
     ],
   },
 ]);
+
 function App() {
-  const navigate = useNavigate();
   return (
     <>
       <Navbar></Navbar>
@@ -26,4 +29,5 @@ function App() {
     </>
   );
 }
+
 export default App;
