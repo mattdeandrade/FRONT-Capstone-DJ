@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import "./navbar.css";
 
 /** Main site navigation */
 function Navbar() {
@@ -12,7 +13,7 @@ function Navbar() {
   };
   return (
     <header>
-      <nav>
+      <nav className="nav">
         <NavLink to="/" className="Navbar1">
           <>DJ Stream - every DJ's dream!</>
         </NavLink>

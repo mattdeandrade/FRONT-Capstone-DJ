@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TrackList } from "./features/tracks/TrackList.jsx";
+
 import "./App.css";
 import "./layout/table.css";
 import { createBrowserRouter } from "react-router-dom";
@@ -17,11 +18,13 @@ export const router = createBrowserRouter([
       //  { path: "/login", element: <AuthForm /> },
 
       { path: "/tracks", element: <TrackList /> },
+      //{path: "/playlists", element: <PlaylistList/>}
     ],
   },
 ]);
 
 function App() {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar></Navbar>
