@@ -17,6 +17,7 @@ export const router = createBrowserRouter([
       //  { path: "/login", element: <AuthForm /> },
 
       { path: "/tracks", element: <TrackList /> },
+      // { path: "/playlists", element: <PlaylistList /> },
     ],
   },
 ]);

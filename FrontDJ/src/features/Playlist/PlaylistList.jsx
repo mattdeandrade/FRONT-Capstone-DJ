@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../account/authSlice";
 import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
-import "./Department.css";
+// import "./Department.css";
 
 export default function DepartmentList() {
   const token = useSelector(selectToken);
