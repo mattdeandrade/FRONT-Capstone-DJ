@@ -46,12 +46,34 @@
   );
 }
 .Navbar3 {
-  border: 2px solid rgb(181, 13, 172);
-  border-style: groove;
+  padding: 5px;
+  border-radius: 25px;
+  background: rgb(181, 13, 172);
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    to right,
+    rgb(200, 21, 220) 0%,
+    rgb(200, 21, 220) 50%,
+    rgb(220, 20, 242) 50%,
+    rgb(220, 20, 242) 100%
+  );
 }
 .Navbar4 {
-  border: 2px solid rgb(181, 13, 172);
-  border-style: groove;
+  padding: 5px;
+  border-radius: 25px;
+  background: rgb(181, 13, 172);
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    to right,
+    rgb(200, 21, 220) 0%,
+    rgb(200, 21, 220) 50%,
+    rgb(220, 20, 242) 50%,
+    rgb(220, 20, 242) 100%
+  );
 }
 
 a {
