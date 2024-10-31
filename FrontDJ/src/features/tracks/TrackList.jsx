@@ -54,11 +54,11 @@ export function TrackList() {
 
           {tracks.map((song) => (
             <tr key={song.id}>
-              <td className="box">{song.name} </td>
+              <td className="box-editpage">{song.name} </td>
 
-              <td className="box">{song.artist}</td>
-              <td className="box"> {song.album}</td>
-              <td className="box">{song.duration}</td>
+              <td className="box-editpage">{song.artist}</td>
+              <td className="box-editpage"> {song.album}</td>
+              <td className="box-editpage">{song.duration}</td>
               <td>{<EditTrack />}</td>
               <td>{<DeleteTrack />}</td>
             </tr>
