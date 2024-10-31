@@ -5,7 +5,6 @@ import "./App.css";
 import "./layout/table.css";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./layout/Root.jsx";
-import Navbar from "./layout/Navbar.jsx";
 import { EditPage } from "./features/tracks/EditPage.jsx";
 import EditPlaylist from "./features/Playlist/EditPlaylist.jsx";
 import PlaylistList from "./features/Playlist/PlaylistList.jsx";
@@ -30,12 +29,8 @@ export const router = createBrowserRouter([
 
 function App() {
   const navigate = useNavigate();
-  return (
-    <>
-      <Navbar></Navbar>
-      <TrackList></TrackList>
-    </>
-  );
+
+  return <></>;
 }
 
 export default App;
