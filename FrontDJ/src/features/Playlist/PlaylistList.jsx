@@ -10,30 +10,54 @@ import { SharePlaylist } from "./SharePlaylist.jsx"; //Imports the SharePlaylist
 
 export default function PlaylistList() {
   //^-Defines the PlaylistList component
-  const token = useSelector(selectToken); //Uses the useSelector hook to retrieve the authentication token from the Redux store, determining if the user is logged in.
-  const navigate = useNavigate(); //Initializes the navigate function to programmatically change routes in the app.
-  const { data: playlists = [], isLoading, error } = useGetPlaylistsQuery(); //Calls useGetPlaylistsQuery to fetch playlists, destructuring the response into playlists, isLoading, and error.
+  // const token = useSelector(selectToken); //Uses the useSelector hook to retrieve the authentication token from the Redux store, determining if the user is logged in.
+  // const navigate = useNavigate(); //Initializes the navigate function to programmatically change routes in the app.
+  // const { data: playlists = [], isLoading, error } = useGetPlaylistsQuery(); //Calls useGetPlaylistsQuery to fetch playlists, destructuring the response into playlists, isLoading, and error.
   const [filter, setFilter] = useState(""); // State for filtering playlists
   // ^-manages the search input for filtering playlists.
   const [selectedPlaylist, setSelectedPlaylist]= useState(null);
+  const playlists = [
+    {
+      id: 1,
+      name: "4 Your Eyez Only",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum soluta natus illum consequatur atque unde earum aspernatur repudiandae magni laboriosam esse fugiat, labore nihil, accusantium ea iste? Culpa, nulla deleniti?",
+      ownerId: 1,
+      owner: { username: "bpatin" },
+      tracks: [
+        { id: 1, trackName: "Lost ones" },
+        { id: 2, trackName: "Neighbors" },
+        { id: 3, trackName: "4 your eyez" },
+      ],
+    },
+    {
+      id: 2,
+      name: "DAMN",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum soluta natus illum consequatur atque unde earum aspernatur repudiandae magni laboriosam esse fugiat, labore nihil, accusantium ea iste? Culpa, nulla deleniti?",
+      ownerId: 1,
+      owner: { username: "bpatin" },
+      tracks: [
+        { id: 4, trackName: "HUMBLE" },
+        { id: 5, trackName: "FEAR" },
+        { id: 6, trackName: "LOVE" },
+      ],
+    },
+  ];
+
 
   // Loading and error handling
-  if (isLoading) {
-    return <p>Loading Playlists...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading Playlists...</p>;
+  // }
 
-  if (error) {
-    return <p>{error.message}</p>;
-  }
+  // if (error) {
+  //   return <p>{error.message}</p>;
+  // }
 
   if (!playlists.length) {
     return <p>There are no playlists.</p>;
   }
-
-  // Filter playlists based on user input
-  const filteredPlaylists = playlists.filter((playlist) =>
-    playlist.name.toLowerCase().includes(filter.toLowerCase())
-  );
 
   return (
     <>
@@ -63,8 +87,8 @@ export default function PlaylistList() {
           </tr>
         </thead>
         <tbody>
-          {/* Maps over the filteredPlaylists array, rendering a table row for each playlist. Each row has a unique key set to the playlist ID. */}
-          {filteredPlaylists.map((playlist) => (
+          {/* Maps over the playlists array created above, rendering a table row for each playlist. Each row has a unique key set to the playlist ID. */}
+          {playlists.map((playlist) => (
             <tr key={playlist.id} className="blue-green">
               {/* Displays the name and ID of the current playlist in a heading. */}
               <td>{playlist.name}</td>
@@ -87,12 +111,12 @@ export default function PlaylistList() {
         </tbody>
       </table>
 
-      {/* Show Add and Share Playlist forms if user is logged in */}
-      {token && (
+      
+      {/* {token && (
         <div>
           <AddPlaylistForm />
         </div>
-      )}
+      )} */}
     </>
   );
 }
