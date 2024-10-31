@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer>
       <div className="footContent">
-        <h1>FaculTeam</h1>
+        <h2>DJStreams</h2>
         <nav>
           <ul className="footerLinks">
             <li>

@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
-import { Footer } from "./footer";
+
+import { Footer } from "./Footer.jsx";
 
 /** Root layout component */
 function Root() {
@@ -8,6 +9,7 @@ function Root() {
     <>
       <Navbar />
       <Outlet />
+
       <Footer />
     </>
   );
