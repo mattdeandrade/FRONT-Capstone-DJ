@@ -5,6 +5,7 @@ import "./layout/table.css";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./layout/Root.jsx";
 import Navbar from "./layout/Navbar.jsx";
+import EditPlaylist from "./features/Playlist/EditPlaylist.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ export const router = createBrowserRouter([
     children: [
       // { index: true, element: <DepartmentList /> },
       // { path: "/playlists", element: <PlayLists /> },
-
+      // { path: "/playlists/:id", element: <EditPlaylist /> },
+      //{ path: "/playlists/:id/share", element: <SharePlaylist /> },
       //  { path: "/login", element: <AuthForm /> },
 
       { path: "/tracks", element: <TrackList /> },

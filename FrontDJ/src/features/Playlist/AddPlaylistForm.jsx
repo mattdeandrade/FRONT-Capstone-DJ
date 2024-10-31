@@ -6,7 +6,6 @@ export function AddPlaylistForm() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    ownerId: null, 
     trackIds: [],
   });
 

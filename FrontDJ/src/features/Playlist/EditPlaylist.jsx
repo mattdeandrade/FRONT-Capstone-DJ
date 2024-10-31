@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetPlaylistQuery, useEditPlaylistMutation } from "./PlaylistSlice";
 
-export function EditPlaylist() {
+export default function EditPlaylist() {
   const { id } = useParams();
   const navigate = useNavigate();
   const {
