@@ -5,6 +5,10 @@ import "./App.css";
 import "./layout/table.css";
 import { createBrowserRouter, Router } from "react-router-dom";
 import Root from "./layout/Root.jsx";
+<<<<<<< HEAD
+=======
+import Navbar from "./layout/Navbar.jsx";
+>>>>>>> 9edca9093d4c4ff80b9fabb8a52d33a4c9cd6ed6
 import { EditPage } from "./features/tracks/EditPage.jsx";
 import EditPlaylist from "./features/Playlist/EditPlaylist.jsx";
 import PlaylistList from "./features/Playlist/PlaylistList.jsx";
@@ -29,8 +33,12 @@ export const router = createBrowserRouter([
 
 function App() {
   const navigate = useNavigate();
+<<<<<<< HEAD
 
   return <></>;
+=======
+  return <></>
+>>>>>>> 9edca9093d4c4ff80b9fabb8a52d33a4c9cd6ed6
 }
 
 export default App;
