@@ -21,6 +21,14 @@ function Navbar() {
         <NavLink to="/tracks" className="Navbar2">
           Tracks
         </NavLink>
+
+        <NavLink to="/edit" className="Navbar3">
+          Edit
+        </NavLink>
+
+        <NavLink to="/playlists" className="Navbar4">
+          Playlists
+        </NavLink>
       </nav>
     </header>
   );
