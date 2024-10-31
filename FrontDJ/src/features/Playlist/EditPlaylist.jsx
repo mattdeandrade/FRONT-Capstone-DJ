@@ -2,57 +2,71 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetPlaylistQuery, useEditPlaylistMutation } from "./PlaylistSlice";
 
-export function EditPlaylist() {
+export default function EditPlaylist() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const {
-    data: playlist,
-    error: fetchError,
-    isLoading: fetchLoading,
-  } = useGetPlaylistQuery(id);
-  const [editPlaylist] = useEditPlaylistMutation();
+  // const {
+  //   data: playlist,
+  //   error: fetchError,
+  //   isLoading: fetchLoading,
+  // } = useGetPlaylistQuery(id);
+  // const [editPlaylist] = useEditPlaylistMutation();
 
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    trackIds: [],
+    tracks: [],
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const playlist = {
+    id: 1,
+    name: "4 Your Eyez Only",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum soluta natus illum consequatur atque unde earum aspernatur repudiandae magni laboriosam esse fugiat, labore nihil, accusantium ea iste? Culpa, nulla deleniti?",
+    ownerId: 1,
+    owner: { username: "bpatin" },
+    tracks: [
+      { id: 1, trackName: "Lost ones" },
+      { id: 2, trackName: "Neighbors" },
+      { id: 3, trackName: "4 your eyez" },
+    ],
+  };
 
   useEffect(() => {
     if (playlist) {
       setFormData({
         name: playlist.name,
         description: playlist.description,
-        trackIds: playlist.trackIds || [],
+        tracks: playlist.tracks || [],
       });
     }
-  }, [playlist]);
+  }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+  //   setError(null);
 
-    try {
-      await editPlaylist({ id, ...formData }).unwrap();
-      navigate("/playlists");
-    } catch (e) {
-      console.error(e);
-      setError("Failed to update playlist. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   try {
+  //     await editPlaylist({ id, ...formData }).unwrap();
+  //     navigate("/playlists");
+  //   } catch (e) {
+  //     console.error(e);
+  //     setError("Failed to update playlist. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  if (fetchLoading) return <p>Loading playlist...</p>;
-  if (fetchError) return <p>Error loading playlist: {fetchError.message}</p>;
+  // if (fetchLoading) return <p>Loading playlist...</p>;
+  // if (fetchError) return <p>Error loading playlist: {fetchError.message}</p>;
 
   return (
-    <form onSubmit={handleSubmit} className="edit-playlist-form">
+    <form onSubmit={() => {}} className="edit-playlist-form">
+      {/* <form onSubmit={handleSubmit} className="edit-playlist-form"> */}
       <h2>Edit Playlist</h2>
-      {error && <p className="error">{error}</p>}
+      {/* {error && <p className="error">{error}</p>} */}
 
       <label>
         Name
@@ -81,8 +95,8 @@ export function EditPlaylist() {
       <label>
         Tracks (comma-separated IDs)
         <input
-          name="trackIds"
-          value={formData.trackIds.join(",")}
+          name="tracks"
+          value={formData.tracks.map((track) => track.trackName).join(", ")}
           onChange={(e) =>
             setFormData({
               ...formData,

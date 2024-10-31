@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { TrackList } from "./features/tracks/TrackList.jsx";
-
+import { Footer } from "./layout/Footer.jsx";
 import "./App.css";
 import "./layout/table.css";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Router } from "react-router-dom";
 import Root from "./layout/Root.jsx";
 import { EditPage } from "./features/tracks/EditPage.jsx";
 import EditPlaylist from "./features/Playlist/EditPlaylist.jsx";
@@ -29,7 +29,6 @@ export const router = createBrowserRouter([
 
 function App() {
   const navigate = useNavigate();
-
   return <></>;
 }
 
