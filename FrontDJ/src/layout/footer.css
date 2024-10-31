@@ -1,41 +1,45 @@
 footer {
-    background-color: #333;  /* Dark gray background */
-    color: #fff;             /* White text */
-    padding: 20px 0;        /* Increased vertical padding */
-    text-align: center;      /* Center-align text */
+  background-color: #333; /* Dark gray background */
+  color: #fff; /* White text */
+  padding: 2px 0; /* Increased vertical padding */
+  text-align: center; /* Center-align text */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .footContent {
-    margin: 0 auto;          /* Center the div */
-    max-width: 600px;        /* Maximum width of 600 pixels */
+  margin: 0 auto; /* Center the div */
+  max-width: 600px; /* Maximum width of 600 pixels */
 }
 
 .footerLinks {
-    list-style: none;        /* Remove bullet points */
-    padding: 0;             /* Remove padding */
-    margin: 10px 0;         /* Add vertical margin */
-    display: flex;          /* Flexbox for horizontal layout */
-    justify-content: center; /* Center the links */
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+  margin: 10px 0; /* Add vertical margin */
+  display: flex; /* Flexbox for horizontal layout */
+  justify-content: center; /* Center the links */
 }
 
 .footerLinks li {
-    margin: 0 15px;         /* Space between links */
+  margin: 0 15px; /* Space between links */
 }
 
 .footerLinks button {
-    background: none;        /* No background */
-    color: #fff;            /* White text for buttons */
-    border: none;           /* No border */
-    font: inherit;          /* Inherit font styles */
-    cursor: pointer;        /* Pointer cursor on hover */
-    padding: 5px 10px;     /* Padding for buttons */
-    transition: color 0.3s; /* Smooth color transition */
+  background: none; /* No background */
+  color: #fff; /* White text for buttons */
+  border: none; /* No border */
+  font: inherit; /* Inherit font styles */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 5px 10px; /* Padding for buttons */
+  transition: color 0.3s; /* Smooth color transition */
 }
 
 .footerLinks button:hover {
-    color: #ffcc00;         /* Change text color on hover (e.g., yellow) */
+  color: #ffcc00; /* Change text color on hover (e.g., yellow) */
 }
 
 .footerLinks button:focus {
-    outline: none;          /* Remove default focus outline */
+  outline: none; /* Remove default focus outline */
 }
