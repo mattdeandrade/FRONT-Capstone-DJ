@@ -29,7 +29,6 @@ export const router = createBrowserRouter([
 
 function App() {
   const navigate = useNavigate();
-
   return <></>;
 }
 

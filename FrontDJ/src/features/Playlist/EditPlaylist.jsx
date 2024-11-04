@@ -8,17 +8,18 @@ export default function EditPlaylist() {
   // const {
   //   data: playlist,
   //   error: fetchError,
-  //   isLoading: fetchLoading,
+  //   isLoading: fetchLoading
   // } = useGetPlaylistQuery(id);
   // const [editPlaylist] = useEditPlaylistMutation();
 
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    tracks: [],
+    trackIds: [],
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const playlist = {
     id: 1,
     name: "4 Your Eyez Only",
@@ -38,10 +39,10 @@ export default function EditPlaylist() {
       setFormData({
         name: playlist.name,
         description: playlist.description,
-        tracks: playlist.tracks || [],
+        tracks: playlist.tracks.map((track) => track.id) || [],
       });
     }
-  }, []);
+  }, [playlist]);
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
@@ -49,7 +50,7 @@ export default function EditPlaylist() {
   //   setError(null);
 
   //   try {
-  //     await editPlaylist({ id, ...formData }).unwrap();
+  //     await editPlaylist({ id, trackIds: formData.trackIds }).unwrap();
   //     navigate("/playlists");
   //   } catch (e) {
   //     console.error(e);
@@ -63,8 +64,7 @@ export default function EditPlaylist() {
   // if (fetchError) return <p>Error loading playlist: {fetchError.message}</p>;
 
   return (
-    <form onSubmit={() => {}} className="edit-playlist-form">
-      {/* <form onSubmit={handleSubmit} className="edit-playlist-form"> */}
+    <form onSubmit={handleSubmit} className="edit-playlist-form">
       <h2>Edit Playlist</h2>
       {/* {error && <p className="error">{error}</p>} */}
 
@@ -96,7 +96,7 @@ export default function EditPlaylist() {
         Tracks (comma-separated IDs)
         <input
           name="tracks"
-          value={formData.tracks.map((track) => track.trackName).join(", ")}
+          value={formData.trackIds.join(", ")}
           onChange={(e) =>
             setFormData({
               ...formData,
