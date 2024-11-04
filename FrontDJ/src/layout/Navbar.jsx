@@ -26,8 +26,12 @@ function Navbar() {
           Edit
         </NavLink>
 
-        <NavLink to="/playlists" className="Navbar4">
+        <NavLink to="/playlists" className="Navbar3">
           Playlists
+        </NavLink>
+
+        <NavLink to="/login" className="Navbar3">
+          Login/Register
         </NavLink>
       </nav>
     </header>

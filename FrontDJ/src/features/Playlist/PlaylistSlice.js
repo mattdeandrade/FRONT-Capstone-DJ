@@ -8,6 +8,13 @@ const playlistApi = api.injectEndpoints({
       transformResponse: (response) => response,
       providesTags: ["playlist"],
     }),
+    //Get playlists by user
+    getPlaylists: build.query({
+      query: () => "/users/:id/playlists",
+      transformResponse: (response) => response,
+      providesTags: ["playlist"],
+    }),
+
     //Get specified playlist
     getPlaylist: build.query({
       query: (id) => `/playlists/${id}`,

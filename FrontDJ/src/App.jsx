@@ -8,6 +8,7 @@ import Root from "./layout/Root.jsx";
 import { EditPage } from "./features/tracks/EditPage.jsx";
 import EditPlaylist from "./features/Playlist/EditPlaylist.jsx";
 import PlaylistList from "./features/Playlist/PlaylistList.jsx";
+import AuthForm from "./features/account/AuthForm.jsx";
 import { SharePlaylist } from "./features/Playlist/SharePlaylist.jsx";
 
 export const router = createBrowserRouter([
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
       { path: "/tracks", element: <TrackList /> },
       { path: "/edit", element: <EditPage /> },
       { path: "/playlists", element: <PlaylistList /> },
+      { path: "/login", element: <AuthForm /> },
     ],
   },
 ]);

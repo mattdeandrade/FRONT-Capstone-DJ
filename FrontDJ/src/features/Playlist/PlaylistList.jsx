@@ -6,17 +6,18 @@ import { selectToken } from "../account/authSlice"; //Imports the selectToken se
 import { useNavigate, Link } from "react-router-dom"; //Imports the useNavigate hook, which enables programmatic navigation between routes.
 import { useState } from "react"; //Imports the useState hook from React to manage local component state.
 import { SharePlaylist } from "./SharePlaylist.jsx"; //Imports the SharePlaylist component to enable sharing playlists.
+
 //import "./PlaylistList.css";
 
 export default function PlaylistList() {
   //^-Defines the PlaylistList component
-  // const token = useSelector(selectToken); //Uses the useSelector hook to retrieve the authentication token from the Redux store, determining if the user is logged in.
-  // const navigate = useNavigate(); //Initializes the navigate function to programmatically change routes in the app.
-  // const { data: playlists = [], isLoading, error } = useGetPlaylistsQuery(); //Calls useGetPlaylistsQuery to fetch playlists, destructuring the response into playlists, isLoading, and error.
+  const token = useSelector(selectToken); //Uses the useSelector hook to retrieve the authentication token from the Redux store, determining if the user is logged in.
+  const navigate = useNavigate(); //Initializes the navigate function to programmatically change routes in the app.
+  const { data: playlists = [], isLoading, error } = useGetPlaylistsQuery(); //Calls useGetPlaylistsQuery to fetch playlists, destructuring the response into playlists, isLoading, and error.
   const [filter, setFilter] = useState(""); // State for filtering playlists
   // ^-manages the search input for filtering playlists.
-  const [selectedPlaylist, setSelectedPlaylist]= useState(null);
-  const playlists = [
+  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  /**const playlists = [
     {
       id: 1,
       name: "4 Your Eyez Only",
@@ -43,17 +44,17 @@ export default function PlaylistList() {
         { id: 6, trackName: "LOVE" },
       ],
     },
-  ];
+  ];*/
 
+  //Loading and error handling
 
-  // Loading and error handling
-  // if (isLoading) {
-  //   return <p>Loading Playlists...</p>;
-  // }
+  if (isLoading) {
+    return <p>Loading Playlists...</p>;
+  }
 
-  // if (error) {
-  //   return <p>{error.message}</p>;
-  // }
+  if (error) {
+    return <p>{error.message}</p>;
+  }
 
   if (!playlists.length) {
     return <p>There are no playlists.</p>;
@@ -111,12 +112,11 @@ export default function PlaylistList() {
         </tbody>
       </table>
 
-      
-      {/* {token && (
+      {token && (
         <div>
           <AddPlaylistForm />
         </div>
-      )} */}
+      )}
     </>
   );
 }

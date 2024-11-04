@@ -17,12 +17,15 @@ function AuthForm() {
   const [register, { error: registerError }] = useRegisterMutation();
 
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const attemptAuth = async (evt) => {
     evt.preventDefault();
 
     const authMethod = isLogin ? login : register;
-    const credentials = { username, password };
+    const credentials = { username, password, firstName, lastName, email };
 
     try {
       await authMethod(credentials).unwrap();
@@ -51,6 +54,30 @@ function AuthForm() {
             type="password"
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
+          />
+        </label>
+        <label>
+          Email
+          <input
+            name="email"
+            value={email}
+            onChange={(evt) => setEmail(evt.target.value)}
+          />
+        </label>{" "}
+        <label>
+          First Name
+          <input
+            name="firstName"
+            value={firstName}
+            onChange={(evt) => setFirstName(evt.target.value)}
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            name="lastName"
+            value={lastName}
+            onChange={(evt) => setLastName(evt.target.value)}
           />
         </label>
         <button>{authAction}</button>
