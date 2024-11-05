@@ -1,9 +1,12 @@
+import api from "../../store/api";
+
 const trackApi = api.injectEndpoints({
   endpoints: (build) => ({
     getTracks: build.query({
-      query: () => "/tracks",
+      //Get user's tracks
+      query: (username) => `/users/${username}/tracks`,
       transformResponse: (response) => response,
-      // transformErrorResponse: (response) => response.data.error,
+      transformErrorResponse: (response) => response.data.error,
       providesTags: ["track"],
     }),
     getTrack: build.query({

@@ -1,21 +1,21 @@
-//import { useGetTracksQuery } from "./trackSlice";
-//import { useGetTrackQuery } from "./trackSlice";
-//import { AddTrack } from "./AddTrack";
+import { useGetTracksQuery } from "./trackSlice";
+import { useGetTrackQuery } from "./trackSlice";
+import { AddTrack } from "./AddTrack";
 import { EditTrack } from "./EditTrack.jsx";
 import { EditPage } from "./EditPage";
 import { DeleteTrack } from "./DeleteTrack.jsx";
 import { useSelector } from "react-redux";
-//import { selectToken } from "../account/authSlice";
-//import { useNavigate } from "react-router-dom"; //exported as an object(not default)
+import { selectToken } from "../account/authSlice";
+import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
 import "./tracks.css";
 
 export function TrackList() {
-  //const token = useSelector(selectToken);
-  //const navigate = useNavigate();
-  // const { data: tracks = [], isLoading, error } = useGetTracksQuery();
+  const token = useSelector(selectToken);
 
-  const tracks = [
+  const navigate = useNavigate();
+  const { data: tracks = [], isLoading, error } = useGetTracksQuery();
+  /**   const tracks = [
     {
       id: 1,
       name: "Bodak Yellow",
@@ -24,9 +24,10 @@ export function TrackList() {
       duration: "3:54",
     },
     { id: 2, name: "Hello", artist: "Adele", album: "25", duration: "6:07" },
-  ];
+  ];*/
+
   const [selectedTrackId, setSelectedTrackId] = useState("");
-  /**   if (isLoading) {
+  if (isLoading) {
     return <p>Loading Tracks...</p>;
   }
 
@@ -36,9 +37,9 @@ export function TrackList() {
 
   if (!tracks.length) {
     return <p>There are no tracks in your library.</p>;
-  } */
+  }
 
-  return (
+  return token ? (
     <>
       <table className="tracks-table">
         <tbody>
@@ -54,10 +55,10 @@ export function TrackList() {
 
           {tracks.map((song) => (
             <tr key={song.id}>
-              <td className="box-editpage">{song.name} </td>
+              <td className="box-editpage">{song.trackName} </td>
 
-              <td className="box-editpage">{song.artist}</td>
-              <td className="box-editpage"> {song.album}</td>
+              <td className="box-editpage">{song.artistName}</td>
+              <td className="box-editpage"> {song.albumName}</td>
               <td className="box-editpage">{song.duration}</td>
               <td>{<EditTrack />}</td>
               <td>{<DeleteTrack />}</td>
@@ -66,5 +67,7 @@ export function TrackList() {
         </tbody>
       </table>
     </>
+  ) : (
+    <>You must be loggin in to view tracks.</>
   );
 }
