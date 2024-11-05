@@ -1,5 +1,6 @@
 import { useGetTracksQuery } from "./trackSlice";
 import { useGetTrackQuery } from "./trackSlice";
+//import { useGetUserQuery } from "../account/authSlice";
 import { AddTrack } from "./AddTrack";
 import { EditTrack } from "./EditTrack.jsx";
 import { EditPage } from "./EditPage";
@@ -14,7 +15,13 @@ export function TrackList() {
   const token = useSelector(selectToken);
 
   const navigate = useNavigate();
-  const { data: tracks = [], isLoading, error } = useGetTracksQuery();
+  const {
+    data: tracks = [],
+    isLoadingTracks,
+    tracksError,
+  } = useGetTracksQuery(); /**const { data: user, isLoadingUser, userError } = useGetUserQuery();   if (userError) return <p>Please log in to see your account details.</p>;
+if (isLoadingUser) return <p>Loading...</p>; */
+
   /**   const tracks = [
     {
       id: 1,
@@ -27,11 +34,12 @@ export function TrackList() {
   ];*/
 
   const [selectedTrackId, setSelectedTrackId] = useState("");
-  if (isLoading) {
+
+  if (isLoadingTracks) {
     return <p>Loading Tracks...</p>;
   }
 
-  if (error) {
+  if (tracksError) {
     return <p>{error.message}</p>;
   }
 
@@ -41,9 +49,10 @@ export function TrackList() {
 
   return token ? (
     <>
+      {" "}
+      <AddTrack />
       <table className="tracks-table">
         <tbody>
-          <tr>{/**AddTrack */}</tr>
           <tr>
             <th>Track</th>
             <th>Artist</th>

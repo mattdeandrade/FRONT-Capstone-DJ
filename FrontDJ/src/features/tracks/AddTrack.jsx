@@ -3,40 +3,21 @@ import { useAddTrackMutation } from "./trackSlice";
 import { useEffect, useState } from "react";
 
 export function AddTrack() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     trackName: "",
     artistName: "",
-    albumName: null, //has to start as null due to the schema defining it as either string or (?)
-    audioDataUrl: null,
+    albumName: undefined,
     bpm: 120,
     genre: "",
     instrumental: true,
     vocals: true,
     duration: 1000,
-    userId: user.id,
-    playlistId: null,
+    playlistId: undefined,
   });
-
+  const navigate = useNavigate();
   const [addTrack] = useAddTrackMutation();
-
-  useEffect(() => {
-    if (track) {
-      setFormData({
-        trackName: track.trackName,
-        artistName: track.artistName,
-        albumName: track.albumName,
-        audioDataUrl: track.audioDataUrl,
-        bpm: track.bpm,
-        genre: track.genre,
-        instrumental: track.instrumental,
-        vocals: track.vocals,
-        duration: track.duration,
-        userId: user.id,
-        playlistId: null,
-      });
-    }
-  }, [track]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -51,6 +32,8 @@ export function AddTrack() {
       navigate("/tracks");
     } catch (e) {
       console.error("Failed to add track: ", e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,7 +86,9 @@ export function AddTrack() {
         />
       </label>{" "}
       <br />
-      <button>Add Track</button>
+      <button type="submit" disabled={loading}>
+        {loading ? "Adding..." : "Add Track"}
+      </button>
     </form>
   );
 }
