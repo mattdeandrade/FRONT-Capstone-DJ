@@ -47,6 +47,7 @@ function AuthForm() {
             onChange={(evt) => setUsername(evt.target.value)}
           />
         </label>
+        <br />
         <label>
           Password
           <input
@@ -55,7 +56,8 @@ function AuthForm() {
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
           />
-        </label>
+        </label>{" "}
+        <br />
         <label>
           Email
           <input
@@ -63,7 +65,8 @@ function AuthForm() {
             value={email}
             onChange={(evt) => setEmail(evt.target.value)}
           />
-        </label>{" "}
+        </label>
+        <br />
         <label>
           First Name
           <input
@@ -71,7 +74,8 @@ function AuthForm() {
             value={firstName}
             onChange={(evt) => setFirstName(evt.target.value)}
           />
-        </label>
+        </label>{" "}
+        <br />
         <label>
           Last Name
           <input
