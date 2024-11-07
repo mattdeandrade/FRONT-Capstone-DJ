@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useAddTrackMutation } from "./trackSlice";
+import { useAddUploadMutation } from "./uploadsSlice";
 import { useEffect, useState } from "react";
 
-export function AddTrack() {
+export function AddUpload() {
   const [formData, setFormData] = useState({
-    trackName: "",
+    name: "",
     artistName: "",
     albumName: undefined,
     bpm: 120,
@@ -15,7 +15,7 @@ export function AddTrack() {
     playlistId: undefined,
   });
   const navigate = useNavigate();
-  const [addTrack] = useAddTrackMutation();
+  const [addUpload] = useAddUploadMutation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -27,11 +27,11 @@ export function AddTrack() {
         playlistId: formData.playlistId ? parseInt(formData.playlistId) : null,
       };
 
-      await addTrack(submissionData).unwrap();
+      await addUpload(submissionData).unwrap();
 
-      navigate("/tracks");
+      navigate("/uploads");
     } catch (e) {
-      console.error("Failed to add track: ", e);
+      console.error("Failed to add upload: ", e);
     } finally {
       setLoading(false);
     }
@@ -39,15 +39,15 @@ export function AddTrack() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>{"Add a track"}</h2>
+      <h2>{"Upload"}</h2>
       <label>
         Song Title:
         <input
           type="text"
           name="name"
-          value={formData.trackName}
+          value={formData.name}
           onChange={(e) =>
-            setFormData({ ...formData, trackName: e.target.value })
+            setFormData({ ...formData, uploadName: e.target.value })
           }
         />
       </label>
@@ -87,7 +87,7 @@ export function AddTrack() {
       </label>{" "}
       <br />
       <button type="submit" disabled={loading}>
-        {loading ? "Adding..." : "Add Track"}
+        {loading ? "Uploading..." : "Upload"}
       </button>
     </form>
   );

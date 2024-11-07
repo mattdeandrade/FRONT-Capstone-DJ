@@ -22,15 +22,23 @@ function Navbar() {
           Tracks
         </NavLink>
 
-        <NavLink to="/edit" className="Navbar3">
+        <NavLink to="/uploads" className="Navbar3">
+          Uploads
+        </NavLink>
+
+        <NavLink to="/edit" className="Navbar4">
           Edit
         </NavLink>
 
-        <NavLink to="/playlists" className="Navbar3">
+        <NavLink to="/edits" className="Navbar5">
+          List of Edited Tracks
+        </NavLink>
+
+        <NavLink to="/playlists" className="Navbar6">
           Playlists
         </NavLink>
 
-        <NavLink to="/login" className="Navbar3">
+        <NavLink to="/login" className="Navbar7">
           Login/Register
         </NavLink>
       </nav>
