@@ -42,6 +42,9 @@ if (isLoadingUser) return <p>Loading...</p>; */
   if (tracksError) {
     return <p>{error.message}</p>;
   }
+  if (!tracks.length && !token) {
+    return <p>You must be logged in to view your library.</p>;
+  }
 
   if (!tracks.length) {
     return <p>There are no tracks in your library.</p>;
@@ -69,14 +72,14 @@ if (isLoadingUser) return <p>Loading...</p>; */
               <td className="box-editpage">{song.artistName}</td>
               <td className="box-editpage"> {song.albumName}</td>
               <td className="box-editpage">{song.duration}</td>
-              <td>{<EditTrack />}</td>
-              <td>{<DeleteTrack />}</td>
+              <td>{<EditTrack id={song.id} />}</td>
+              <td>{<DeleteTrack id={song.id} />}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </>
   ) : (
-    <>You must be loggin in to view tracks.</>
+    <>You must be logged in to view tracks.</>
   );
 }

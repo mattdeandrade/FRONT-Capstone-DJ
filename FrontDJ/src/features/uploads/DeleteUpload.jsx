@@ -1,14 +1,14 @@
-import { useDeleteTrackMutation } from "./trackSlice";
+import { useDeleteUploadMutation } from "./uploadsSlice";
 import { useNavigate } from "react-router-dom";
 
-export function DeleteTrack({ id }) {
+export function DeleteUpload({ id }) {
   const navigate = useNavigate();
-  const [deleteTrack] = useDeleteTrackMutation();
+  const [deleteUpload] = useDeleteUploadMutation();
   const removemark = "\u232B";
   const handleClick = async () => {
     try {
-      await deleteTrack(id).unwrap();
-      navigate("/tracks");
+      await deleteUpload(id).unwrap();
+      navigate("/uploads");
     } catch (e) {
       console.error(e);
     }
