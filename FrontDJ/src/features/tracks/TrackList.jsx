@@ -1,7 +1,6 @@
 import { useGetTracksQuery } from "./trackSlice";
 import { useGetTrackQuery } from "./trackSlice";
 //import { useGetUserQuery } from "../account/authSlice";
-import { AddTrack } from "./AddTrack";
 import { EditTrack } from "./EditTrack.jsx";
 import { EditPage } from "./EditPage";
 import { DeleteTrack } from "./DeleteTrack.jsx";
@@ -10,6 +9,7 @@ import { selectToken } from "../account/authSlice";
 import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
 import "./tracks.css";
+import FileUploader  from "../FileHandler.jsx"
 
 export function TrackList() {
   const token = useSelector(selectToken);
@@ -53,7 +53,7 @@ if (isLoadingUser) return <p>Loading...</p>; */
   return token ? (
     <>
       {" "}
-      <AddTrack />
+      <FileUploader />
       <table className="tracks-table">
         <tbody>
           <tr>
