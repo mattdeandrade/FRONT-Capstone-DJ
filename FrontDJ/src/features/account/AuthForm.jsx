@@ -58,32 +58,36 @@ function AuthForm() {
           />
         </label>{" "}
         <br />
-        <label>
-          Email
-          <input
-            name="email"
-            value={email}
-            onChange={(evt) => setEmail(evt.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          First Name
-          <input
-            name="firstName"
-            value={firstName}
-            onChange={(evt) => setFirstName(evt.target.value)}
-          />
-        </label>{" "}
-        <br />
-        <label>
-          Last Name
-          <input
-            name="lastName"
-            value={lastName}
-            onChange={(evt) => setLastName(evt.target.value)}
-          />
-        </label>
+        {!isLogin && (
+          <>
+            <label>
+              Email
+              <input
+                name="email"
+                value={email}
+                onChange={(evt) => setEmail(evt.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              First Name
+              <input
+                name="firstName"
+                value={firstName}
+                onChange={(evt) => setFirstName(evt.target.value)}
+              />
+            </label>{" "}
+            <br />
+            <label>
+              Last Name
+              <input
+                name="lastName"
+                value={lastName}
+                onChange={(evt) => setLastName(evt.target.value)}
+              />
+            </label>
+          </>
+        )}
         <button>{authAction}</button>
       </form>
       <a href="#" onClick={() => setIsLogin(!isLogin)}>
