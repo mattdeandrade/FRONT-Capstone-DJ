@@ -47,7 +47,12 @@ if (isLoadingUser) return <p>Loading...</p>; */
   }
 
   if (!uploads.length) {
-    return <p>There are no uploads in your library.</p>;
+    return (
+      <>
+        {" "}
+        <p>There are no uploads in your library.</p> <AddUpload />
+      </>
+    );
   }
 
   return token ? (
