@@ -1,12 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/account/authSlice.js";
 import "./navbar.css";
 
 /** Main site navigation */
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
   const attemptLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -41,6 +42,11 @@ function Navbar() {
         <NavLink to="/login" className="Navbar7">
           Login/Register
         </NavLink>
+        {token && (
+          <a href="#" onClick={attemptLogout} className="Navbar8">
+            Log Out
+          </a>
+        )}
       </nav>
     </header>
   );
