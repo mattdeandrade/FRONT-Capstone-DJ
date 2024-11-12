@@ -5,7 +5,6 @@ const trackApi = api.injectEndpoints({
     getTracks: build.query({
       //Get user's tracks
       query: () => `/users/tracks`,
-
       transformResponse: (response) => response,
       transformErrorResponse: (response) => response.data.error,
       providesTags: ["track"],
@@ -25,13 +24,18 @@ const trackApi = api.injectEndpoints({
       invalidatesTags: ["track"],
     }),
     addTrack: build.mutation({
-      query: (track) => ({
-        url: "/tracks",
-        method: "POST",
-        body: track,
-      }),
+      query: (file) => {
+        const formData = new FormData();
+        formData.append("mp3", file);
+        return {
+          url: "/tracks",
+          method: "POST",
+          body: formData,
+        };
+      },
       invalidatesTags: ["track"],
     }),
+
     deleteTrack: build.mutation({
       query: (id) => ({
         url: "tracks/" + id,

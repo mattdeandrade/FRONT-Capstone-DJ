@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAddTrackMutation } from "./trackSlice";
 import { useEffect, useState } from "react";
 
-export default function AddTrack({getFile, setGetFile}) {
+export default function AddTrack() {
   // const [formData, setFormData] = useState({
   //   trackName: "",
   //   artistName: "",
@@ -18,27 +18,48 @@ export default function AddTrack({getFile, setGetFile}) {
   const [addTrack] = useAddTrackMutation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [getFile,setGetFile] = useState(null);
+   
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const submissionData = {
-        ...getFile,
-       // playlistId: formData.playlistId ? parseInt(formData.playlistId) : null,
-      };
 
-      await addTrack(submissionData).unwrap();
+    const handleSubmit = async (event) => {
+      event.preventDefault();
 
-      navigate("/tracks");
-    } catch (e) {
-      console.error("Failed to add track: ", e);
-    } finally {
-      setLoading(false);
-    }
-  };
+      setGetFile(event);
+      try {
+       
+        const FileUploader = () => (
+         
+          <input
+            type="file"
+            ref={getFile}
+            accept=".mp3"
+            onChange={setGetFile}
+          />
+        );
+
+
+        const file = new File([FileUploader], "test");
+  
+  
+        await addTrack(file).unwrap();
+  
+        navigate("/tracks");
+      } catch (e) {
+        console.error("Failed to add track: ", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form 
+    type="file"
+    accept=".mp3"
+    onSubmit={handleSubmit}>
+      
       <h2>{"Add a track"}</h2>
       {/* <label>
         Song Title:
@@ -88,8 +109,9 @@ export default function AddTrack({getFile, setGetFile}) {
       </label>{" "} */}
       <br />
       <button type="submit" disabled={loading}>
-        {loading ? "Adding..." : "Add Track"}
+        {loading ? "Adding..." : "Choose Track"}
       </button>
       </form>
   );
 }
+
