@@ -9,8 +9,7 @@ import { selectToken } from "../account/authSlice";
 import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
 import "./tracks.css";
-import FileUploader  from "../FileHandler.jsx"
-
+import { AddTrack }  from "./AddTrack.jsx"
 export function TrackList() {
   const token = useSelector(selectToken);
 
@@ -53,7 +52,7 @@ if (isLoadingUser) return <p>Loading...</p>; */
   return token ? (
     <>
       {" "}
-      <FileUploader />
+      <AddTrack/>
       <table className="tracks-table">
         <tbody>
           <tr>
