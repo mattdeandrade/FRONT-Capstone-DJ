@@ -15,6 +15,12 @@ function Navbar() {
   return (
     <header>
       <nav className="nav">
+        {/* Navbar Logo Image */}
+        <img
+          src="https://i.postimg.cc/NjRFR5X6/1b9a146a0c995c9e2cf971e51f2215ea.png" 
+          alt="DJ Stream Logo"
+          className="navbar-logo"
+        />
         <NavLink to="/" className="Navbar1">
           <>DJ Stream - every DJ's dream!</>
         </NavLink>

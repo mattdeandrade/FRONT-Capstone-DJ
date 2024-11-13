@@ -1,169 +1,128 @@
 :root {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   margin: 0;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #5d5a5a;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Navigation Bar */
 .nav {
-  position: absolute;
-  left: 0px;
-  height: 40px;
-  width: 100%;
-  text-align: center;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* Adjusted height */
+  text-align: center;
   background-image: linear-gradient(10deg, #af40ff, #5b42f3 50%, #c159d6);
-
-  padding-top: 15px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: flex-start; /* Align items to the left */
 }
 
-.Navbar1 {
-  margin-left: 10px;
+/* Logo Image Styles */
+.navbar-logo {
+  width: 50px; /* Adjust the size */
+  height: auto;
+  margin-right: 20px; /* Space between the logo and the first link */
 }
 
-.Navbar2 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-.Navbar3 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-.Navbar4 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-
-.Navbar5 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-
-.Navbar6 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-
-.Navbar7 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-.Navbar8 {
-  padding: 5px;
-  border-radius: 25px;
-  background: rgb(181, 13, 172);
-  margin-left: 10px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(
-    to right,
-    rgb(200, 21, 220) 0%,
-    rgb(200, 21, 220) 50%,
-    rgb(220, 20, 242) 50%,
-    rgb(220, 20, 242) 100%
-  );
-}
-a {
+/* Navigation Links */
+.nav a {
   font-weight: 500;
   color: #dedee4;
-  text-decoration: inherit;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 0 10px;
+  display: inline-block;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-a:hover {
+
+.nav a:hover {
   color: #09d896;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-button:hover {
-  border-color: #25d488;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.nav .Navbar1 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.nav .active {
+  background-color: #5b42f3;
+  color: #fff;
+}
+
+.nav .Navbar2,
+.nav .Navbar3,
+.nav .Navbar4,
+.nav .Navbar5,
+.nav .Navbar6,
+.nav .Navbar7,
+.nav .Navbar8 {
+  background: linear-gradient(
+    to right,
+    rgb(200, 21, 220) 0%,
+    rgb(200, 21, 220) 50%,
+    rgb(220, 20, 242) 50%,
+    rgb(220, 20, 242) 100%
+  );
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
+  margin-left: 10px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.nav .Navbar2:hover,
+.nav .Navbar3:hover,
+.nav .Navbar4:hover,
+.nav .Navbar5:hover,
+.nav .Navbar6:hover,
+.nav .Navbar7:hover,
+.nav .Navbar8:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav {
+    padding-top: 10px;
+    height: 60px;
   }
-  a:hover {
-    color: #74ffae;
+
+  .nav a {
+    font-size: 1rem;
+    padding: 8px 12px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .navbar-logo {
+    width: 40px; /* Adjust the logo size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding-top: 8px;
+    height: 50px;
+  }
+
+  .nav a {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .navbar-logo {
+    width: 35px; /* Further adjust the logo size for very small screens */
   }
 }

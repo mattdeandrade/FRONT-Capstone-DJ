@@ -65,7 +65,7 @@ export function SharePlaylist() {
       <div>
         <p>Shareable Link: {shareableLink}</p>
         <button onClick={handleCopyClick}>Copy Link</button>
-        <button onClick={handleShareClick}>Share Playlist</button>
+        {/* <button onClick={handleShareClick}>Share Playlist</button> */}
       </div>
     </div>
   );

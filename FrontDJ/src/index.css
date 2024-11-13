@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87); /* Global text color (light text on dark background) */
   background-color: #242424;
 
   font-synthesis: none;
@@ -13,28 +13,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-image: url('https://i.postimg.cc/D0vyvP5C/pexels-jake-l-davies-42710276-15262988.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #242424;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Make sure body text is legible */
+body, p, span, a, button, h1, h2, h3 {
+  color: #e0e0e0; /* Light gray text for general content */
 }
 
+/* Heading styling */
+h1, h2, h3 {
+  color: #fff; /* White color for headings to make them stand out */
+}
+
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,13 +46,45 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #fff; /* Ensure button text is white */
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
+  background-color: #535bf2;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Form Inputs and Textareas */
+input,
+textarea {
+  background-color: #fff;
+  color: #333; /* Dark text for form elements */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #535bf2;
+  outline: none;
+}
+
+/* Links */
+a {
+  color: #646cff; /* Link color */
+  font-weight: 500;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2; /* Hover effect for links */
 }

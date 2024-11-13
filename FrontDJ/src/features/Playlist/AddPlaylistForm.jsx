@@ -1,103 +1,92 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAddPlaylistMutation } from "./PlaylistSlice";
-import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import { selectToken } from "../account/authSlice";
 export function AddPlaylistForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    trackIds: [],
-  });
-
   const navigate = useNavigate();
-  const [addPlaylist] = useAddPlaylistMutation();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  async function postPlaylist(event) { //handle
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    // Validation
-    if (!formData.name || !formData.description) {
-      setError("Name and description are required.");
-      setLoading(false);
-      return;
-    }
-
+  const token = useSelector(selectToken); // Get auth token from Redux store
+  const [name, setName] = useState(""); // Playlist name
+  const [description, setDescription] = useState(""); // Playlist description
+  const [trackIds, setTrackIds] = useState([]); // Track IDs (can be empty initially)
+  // Mutation hook to create a new playlist
+  const [addPlaylist, { isLoading, error }] = useAddPlaylistMutation();
+  // Handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Convert trackIds to integers if they are not empty
+    const validTrackIds = trackIds.length
+      ? trackIds.map((id) => parseInt(id, 10)) // Convert each trackId to an integer
+      : [];
+    // Create the playlist data object
+    const playlistData = {
+      name,
+      description,
+      trackIds: validTrackIds, // Ensure trackIds is valid (array of integers)
+    };
     try {
-      const playlist = await addPlaylist({
-        ...formData,
-        trackIds: formData.trackIds,
-      }).unwrap();
-      navigate("/playlists");
-    } catch (e) {
-      console.error(e);
-      setError("Failed to add playlist.");
-    } finally {
-      setLoading(false);
+      // Make the API call to create the playlist
+      await addPlaylist(playlistData).unwrap(); // unwrap() provides direct error handling
+      // Optionally reset the form after successful submission
+      setName("");
+      setDescription("");
+      setTrackIds([]);
+      // Redirect to a different page after successful playlist creation (optional)
+      navigate("/playlists"); // Navigate to playlists page or other page
+    } catch (err) {
+      console.error("Error while adding playlist:", err);
     }
-  }
-
-
+  };
   return (
-    <form onSubmit={postPlaylist} className="add-update-form">
-      <h2>Add Playlist</h2>
-      {error && <p className="error">{error}</p>}
-      <label>
-        Name
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-        />
-      </label>
-      <br />
-      <label>
-        Description
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
-          }
-          required
-        />
-      </label>
-      <br />
-      <label>
-        Tracks (comma-separated IDs)
-        <input
-          name="trackIds"
-          value={formData.trackIds}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              trackIds: e.target.value.split(",").map(Number),
-            })
-          }
-        />
-      </label>
-      <br />
-      <label>
-        Owner ID
-        <input
-          type="number"
-          name="ownerId"
-          value={formData.ownerId || ""}
-          onChange={(e) =>
-            setFormData({ ...formData, ownerId: Number(e.target.value) })
-          }
-        />
-      </label>
-      <button type="submit" disabled={loading}>
-        {loading ? "Adding..." : "Add Playlist"}
-      </button>
-      <br />
-    </form>
+    <div>
+      <h2>Create a New Playlist</h2>
+      {/* Render error if it exists, but make sure not to render an object */}
+      {error && (
+        <p style={{ color: "red" }}>
+          {error?.data?.message || "An unexpected error occurred."}
+        </p>
+      )}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Playlist Name:</label>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        {/* <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div> */}
+        {/* Optionally add tracks (for now we assume trackIds is empty) */}
+        <div>
+          <label htmlFor="trackIds">Tracks:</label>
+          <input
+            id="trackIds"
+            type="text"
+            value={trackIds.join(", ")} // Display track IDs as a comma-separated string
+            onChange={(e) =>
+              setTrackIds(
+                e.target.value.split(",").map((id) => id.trim()) // Split by commas and trim whitespace
+              )
+            }
+            placeholder="Enter track IDs separated by commas"
+          />
+        </div>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Adding Playlist..." : "Create Playlist"}
+        </button>
+      </form>
+      {/* Show a loading message while the mutation is in progress */}
+      {isLoading && <p>Submitting...</p>}
+    </div>
   );
 }

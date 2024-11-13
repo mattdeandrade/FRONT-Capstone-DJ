@@ -1,9 +1,9 @@
 #root {
-  max-width: 1280px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 9rem;
   text-align: center;
-  background-color: #888;
+  background-color: #e7e7e7be;
 }
 #html {
   background-color: #888;
