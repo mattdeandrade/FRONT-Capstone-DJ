@@ -1,17 +1,25 @@
+/* Body or main container padding to avoid content overlap */
+body {
+  padding-bottom: 50px; /* Adjust this value to match the footer's height */
+}
+
+/* Footer styling */
 footer {
   background-color: #333; /* Dark gray background */
   color: #fff; /* White text */
-  padding: 2px 0; /* Increased vertical padding */
+  padding: 0.1rem 0; /* Adjusted padding for better spacing */
   text-align: center; /* Center-align text */
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  z-index: 10; /* Ensure the footer stays on top */
 }
 
+/* Styling for content inside footer */
 .footContent {
   margin: 0 auto; /* Center the div */
-  max-width: 600px; /* Maximum width of 600 pixels */
+  max-width: 600px; /* Maximum width of 600px */
 }
 
 .footerLinks {

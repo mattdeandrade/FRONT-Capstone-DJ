@@ -51,6 +51,7 @@ export default function PlaylistList() {
               .map((playlist) => (
                 <tr key={playlist.id} className="blue-green">
                   <td>{playlist.name}</td>
+                  <td>{playlist.user.username}</td>
                   {/* Rendering tracks */}
                   <td>
                     {playlist.tracks && playlist.tracks.length > 0
@@ -69,7 +70,7 @@ export default function PlaylistList() {
                   </td>
                   {/* Edit link */}
                   <td>
-                    <Link to={`/playlists/${playlist.id}`}>Edit</Link>
+                    <Link to={`/playlists/${playlist.id}`}>Add More Tracks</Link>
                   </td>
                 </tr>
               ))

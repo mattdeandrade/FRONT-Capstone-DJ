@@ -12,6 +12,7 @@ import AuthForm from "./features/account/AuthForm.jsx";
 import { UploadList } from "./features/uploads/UploadList.jsx";
 import { EditList } from "./features/edits/EditList.jsx";
 import { SharePlaylist } from "./features/Playlist/SharePlaylist.jsx";
+import HomePage from "./features/Home/HomePage.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       // { path: "/playlists", element: <PlayLists /> },
 
       //  { path: "/login", element: <AuthForm /> },
+      { path: "/", element: <HomePage /> },
       { path: "/playlists/:id", element: <EditPlaylist /> },
       { path: "/playlists/:id/share", element: <SharePlaylist /> },
       { path: "/tracks", element: <TrackList /> },

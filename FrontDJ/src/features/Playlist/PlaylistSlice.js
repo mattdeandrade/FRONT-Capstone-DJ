@@ -24,7 +24,7 @@ const playlistApi = api.injectEndpoints({
     // Get specified playlist
     getPlaylist: build.query({
       query: (id) => `/playlists/${id}`,
-      transformResponse: (response) => response.playlist, // Assumes the response contains the `playlist` object
+      transformResponse: (response) => response, // Assumes the response contains the `playlist` object
       providesTags: ["playlist"],
     }),
 

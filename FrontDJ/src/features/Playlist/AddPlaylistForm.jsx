@@ -57,7 +57,7 @@ export function AddPlaylistForm() {
             required
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -65,7 +65,7 @@ export function AddPlaylistForm() {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         {/* Optionally add tracks (for now we assume trackIds is empty) */}
         <div>
           <label htmlFor="trackIds">Tracks:</label>
