@@ -24,9 +24,9 @@ const trackApi = api.injectEndpoints({
       invalidatesTags: ["track"],
     }),
     addTrack: build.mutation({
-      query: (file) => {
+      query: (getFile) => {
         const formData = new FormData();
-        formData.append("mp3", file);
+        formData.append("mp3", getFile);
         return {
           url: "/tracks",
           method: "POST",
