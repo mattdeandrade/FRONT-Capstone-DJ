@@ -9,7 +9,7 @@ import { selectToken } from "../account/authSlice";
 import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
 import "./tracks.css";
-import { AddTrack }  from "./AddTrack.jsx"
+import { AddTrack } from "./AddTrack.jsx";
 export function TrackList() {
   const token = useSelector(selectToken);
 
@@ -46,13 +46,19 @@ if (isLoadingUser) return <p>Loading...</p>; */
   }
 
   if (!tracks.length) {
-    return <p>There are no tracks in your library.</p>;
+    return (
+      <>
+        {" "}
+        <p>There are no tracks in your library.</p>
+        <AddTrack />
+      </>
+    );
   }
 
   return token ? (
     <>
       {" "}
-      <AddTrack/>
+      <AddTrack />
       <table className="tracks-table">
         <tbody>
           <tr>
