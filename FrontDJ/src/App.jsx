@@ -13,6 +13,8 @@ import { UploadList } from "./features/uploads/UploadList.jsx";
 import { EditList } from "./features/edits/EditList.jsx";
 import { SharePlaylist } from "./features/Playlist/SharePlaylist.jsx";
 import HomePage from "./features/Home/HomePage.jsx";
+//import AudioPlayer from "./features/TrackEditor/AudioPlayer.jsx";
+import AudioPlayer from "./features/TrackEditor/TotalAudioPlayer.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +30,8 @@ export const router = createBrowserRouter([
       { path: "/tracks", element: <TrackList /> },
       { path: "/uploads", element: <UploadList /> },
       { path: "/edits", element: <EditList /> },
-      { path: "/edit", element: <EditPage /> },
+      { path: "/edit", element: <AudioPlayer /> },
+      //{ path: "/edit", element: <EditPage /> },
       { path: "/playlists", element: <PlaylistList /> },
       { path: "/login", element: <AuthForm /> },
     ],
