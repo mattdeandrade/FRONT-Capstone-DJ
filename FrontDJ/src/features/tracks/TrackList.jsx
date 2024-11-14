@@ -1,12 +1,9 @@
 import { useGetTracksQuery } from "./trackSlice";
-import { useGetTrackQuery } from "./trackSlice";
-//import { useGetUserQuery } from "../account/authSlice";
 import { EditTrack } from "./EditTrack.jsx";
-import { EditPage } from "./EditPage";
 import { DeleteTrack } from "./DeleteTrack.jsx";
 import { useSelector } from "react-redux";
 import { selectToken } from "../account/authSlice";
-import { useNavigate } from "react-router-dom"; //exported as an object(not default)
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./tracks.css";
 import { AddTrack } from "./AddTrack.jsx";
@@ -18,19 +15,7 @@ export function TrackList() {
     data: tracks = [],
     isLoadingTracks,
     tracksError,
-  } = useGetTracksQuery(); /**const { data: user, isLoadingUser, userError } = useGetUserQuery();   if (userError) return <p>Please log in to see your account details.</p>;
-if (isLoadingUser) return <p>Loading...</p>; */
-
-  /**   const tracks = [
-    {
-      id: 1,
-      name: "Bodak Yellow",
-      artist: "Cardi B",
-      album: "Invasion of Privacy",
-      duration: "3:54",
-    },
-    { id: 2, name: "Hello", artist: "Adele", album: "25", duration: "6:07" },
-  ];*/
+  } = useGetTracksQuery();
 
   const [selectedTrackId, setSelectedTrackId] = useState("");
 
