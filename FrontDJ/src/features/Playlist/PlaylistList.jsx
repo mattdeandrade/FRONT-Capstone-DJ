@@ -28,7 +28,6 @@ export default function PlaylistList() {
   return (
     <>
       <h1> Our Playlists</h1>
-      {error && <p>{error.data.message}</p>}
       {/* {!playlists.length && <p>There are no playlists.</p>} */}
       <form>
         <input
