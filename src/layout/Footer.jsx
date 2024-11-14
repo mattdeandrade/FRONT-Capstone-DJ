@@ -1,7 +1,7 @@
 //Refer to the Notes at the bottom of page for explanations to the code
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Footer.css";
+import "./footer.css";
 
 export default function Footer() {
   const navigate = useNavigate();
