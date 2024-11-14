@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAddPlaylistMutation } from "./PlaylistSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../account/authSlice";
+
 export function AddPlaylistForm() {
   const navigate = useNavigate();
   const token = useSelector(selectToken); // Get auth token from Redux store
@@ -67,9 +68,9 @@ export function AddPlaylistForm() {
           />
         </div> */}
         {/* Optionally add tracks (for now we assume trackIds is empty) */}
-        <div>
-          <label htmlFor="trackIds">Tracks:</label>
-          <input
+        {/* <div> 
+           <label htmlFor="trackIds">Track Name:</label> 
+           <input
             id="trackIds"
             type="text"
             value={trackIds.join(", ")} // Display track IDs as a comma-separated string
@@ -78,9 +79,10 @@ export function AddPlaylistForm() {
                 e.target.value.split(",").map((id) => id.trim()) // Split by commas and trim whitespace
               )
             }
-            placeholder="Enter track IDs separated by commas"
-          />
-        </div>
+            placeholder="Enter track names separated by commas"
+          /> 
+         </div> */}
+
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Adding Playlist..." : "Create Playlist"}
         </button>

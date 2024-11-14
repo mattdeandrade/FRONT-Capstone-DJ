@@ -6,16 +6,22 @@ import { selectToken } from "../account/authSlice";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { SharePlaylist } from "./SharePlaylist.jsx";
+import { useGetTracksQuery } from "../tracks/trackSlice.js";
+
 export default function PlaylistList() {
   const token = useSelector(selectToken); // Get auth token from Redux
   const navigate = useNavigate(); // Navigate between pages
   const { data: playlists = [], isLoading, error } = useGetUserPlaylistsQuery(); // Fetch users playlists data
+  const { data: tracks = [] } = useGetTracksQuery();
+  console.log(tracks);
+  
+
   const [filter, setFilter] = useState(""); // Filter state for search
   // Debugging: log data, isLoading, and error
-  console.log("Playlists: ", playlists);
-  console.log("isLoading: ", isLoading);
-  console.log("Error: ", error);
-  console.log(token);
+  // console.log("Playlists: ", playlists);
+  // console.log("isLoading: ", isLoading);
+  // console.log("Error: ", error);
+  // console.log(token);
   if (isLoading) {
     return <p>Loading Playlists...</p>;
   }
@@ -70,7 +76,9 @@ export default function PlaylistList() {
                   </td>
                   {/* Edit link */}
                   <td>
-                    <Link to={`/playlists/${playlist.id}`}>Add More Tracks</Link>
+                    <Link to={`/playlists/${playlist.id}`}>
+                      Add More Tracks
+                    </Link>
                   </td>
                 </tr>
               ))
