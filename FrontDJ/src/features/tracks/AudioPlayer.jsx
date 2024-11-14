@@ -8,13 +8,13 @@ const ProgressBar = ({ currentTime, duration, onSeek, color }) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickPosition = e.clientX - rect.left;
     const newTime = (clickPosition / rect.width) * duration;
-    onSeek(newTime);
+    onSeek(newTime); // Update playback time
   };
 
   return (
     <div>
       <div
-        onClick={handleSeek}
+        onClick={handleSeek} // Add click handler for seeking
         style={{
           width: "100%",
           backgroundColor: "#ddd",
@@ -51,7 +51,7 @@ const ProgressBar = ({ currentTime, duration, onSeek, color }) => {
     </div>
   );
 };
-
+//Allows for pitch and tempo changes.
 const AudioEffects = ({ pitch, setPitch, tempo, setTempo, loop, setLoop }) => (
   <div>
     <div>
@@ -90,6 +90,7 @@ const AudioEffects = ({ pitch, setPitch, tempo, setTempo, loop, setLoop }) => (
 );
 
 const FileUploader = ({ fileInputRef, handleFileChange }) => (
+  //mp3 file uploader
   <input
     type="file"
     ref={fileInputRef}
@@ -173,7 +174,7 @@ const useAudio = () => {
       originalPlayer.start(0, time);
       setOriginalTime(time);
     }
-  };
+  }; // Start from the new seek position
 
   const handleSeekAltered = (time) => {
     if (alteredPlayer) {
@@ -182,7 +183,7 @@ const useAudio = () => {
       setAlteredTime(time);
     }
   };
-
+  // Update time-tracking interval
   useEffect(() => {
     const interval = setInterval(() => {
       if (originalPlayer && originalPlayer.state === "started") {

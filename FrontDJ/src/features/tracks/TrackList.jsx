@@ -1,12 +1,9 @@
 import { useGetTracksQuery } from "./trackSlice";
-import { useGetTrackQuery } from "./trackSlice";
-//import { useGetUserQuery } from "../account/authSlice";
 import { EditTrack } from "./EditTrack.jsx";
-import { EditPage } from "./EditPage";
 import { DeleteTrack } from "./DeleteTrack.jsx";
 import { useSelector } from "react-redux";
 import { selectToken } from "../account/authSlice";
-import { useNavigate } from "react-router-dom"; //exported as an object(not default)
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./tracks.css";
 import { AddTrack } from "./AddTrack.jsx";
@@ -18,19 +15,7 @@ export function TrackList() {
     data: tracks = [],
     isLoadingTracks,
     tracksError,
-  } = useGetTracksQuery(); /**const { data: user, isLoadingUser, userError } = useGetUserQuery();   if (userError) return <p>Please log in to see your account details.</p>;
-if (isLoadingUser) return <p>Loading...</p>; */
-
-  /**   const tracks = [
-    {
-      id: 1,
-      name: "Bodak Yellow",
-      artist: "Cardi B",
-      album: "Invasion of Privacy",
-      duration: "3:54",
-    },
-    { id: 2, name: "Hello", artist: "Adele", album: "25", duration: "6:07" },
-  ];*/
+  } = useGetTracksQuery();
 
   const [selectedTrackId, setSelectedTrackId] = useState("");
 
@@ -63,9 +48,9 @@ if (isLoadingUser) return <p>Loading...</p>; */
         <tbody>
           <tr>
             <th>Track</th>
-            {/* <th>Artist</th>
+            <th>Artist</th>
             <th>Album</th>
-            <th>Duration</th> */}
+            <th>Duration</th>
             <td>Edit</td>
             <td>Delete</td>
           </tr>
@@ -74,16 +59,15 @@ if (isLoadingUser) return <p>Loading...</p>; */
             <tr key={song.id}>
               <td className="box-editpage">{song.trackName} </td>
 
-              {/* <td className="box-editpage">{song.artistName}</td>
+              <td className="box-editpage">{song.artistName}</td>
               <td className="box-editpage"> {song.albumName}</td>
-              <td className="box-editpage">{song.duration}</td> */}
+              <td className="box-editpage">{song.duration}</td>
               <td>{<EditTrack id={song.id} />}</td>
               <td>{<DeleteTrack id={song.id} />}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      ) : <p>There are no tracks in your library.</p> }
     </>
   ) : (
     <>You must be logged in to view tracks.</>

@@ -10,12 +10,14 @@ const trackApi = api.injectEndpoints({
       providesTags: ["track"],
     }),
     getTrack: build.query({
+      //Get a single track
       query: (id) => "/tracks/" + id,
       transformResponse: (response) => response.data,
       transformErrorResponse: (response) => response.data.error,
       providesTags: ["track"],
     }),
     updateTrack: build.mutation({
+      //Update a track
       query: (track) => ({
         url: `/tracks/${track.id}`,
         method: "PUT",
@@ -24,6 +26,7 @@ const trackApi = api.injectEndpoints({
       invalidatesTags: ["track"],
     }),
     addTrack: build.mutation({
+      //Post a track to a user's library
       query: (getFile) => {
         const formData = new FormData();
         formData.append("mp3", getFile);
@@ -37,6 +40,7 @@ const trackApi = api.injectEndpoints({
     }),
 
     deleteTrack: build.mutation({
+      //Delete a track from the user's library
       query: (id) => ({
         url: "tracks/" + id,
         method: "DELETE",
@@ -45,8 +49,7 @@ const trackApi = api.injectEndpoints({
     }),
   }),
 });
-// When exporting queries, you put the words "use" and "query"
-// around whatever name you chose above when injecting endpoints
+
 export const {
   useGetTracksQuery,
   useGetTrackQuery,
