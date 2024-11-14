@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 
-export function Footer() {
+export default function Footer() {
   const navigate = useNavigate();
   //capitalized F in footer
   return (
