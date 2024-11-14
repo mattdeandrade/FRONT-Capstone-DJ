@@ -9,7 +9,7 @@ import { selectToken } from "../account/authSlice";
 import { useNavigate } from "react-router-dom"; //exported as an object(not default)
 import { useState } from "react";
 import "./tracks.css";
-import { AddTrack }  from "./AddTrack.jsx"
+import { AddTrack } from "./AddTrack.jsx";
 export function TrackList() {
   const token = useSelector(selectToken);
 
@@ -45,21 +45,27 @@ if (isLoadingUser) return <p>Loading...</p>; */
     return <p>You must be logged in to view your library.</p>;
   }
 
+  if (!tracks.length) {
+    return (
+      <>
+        {" "}
+        <p>There are no tracks in your library.</p>
+        <AddTrack />
+      </>
+    );
+  }
 
   return token ? (
     <>
       {" "}
-      <AddTrack/>
-      {tracks.length >0 ? (
-
-      
+      <AddTrack />
       <table className="tracks-table">
         <tbody>
           <tr>
             <th>Track</th>
-            {/* <th>Artist</th>
+            <th>Artist</th>
             <th>Album</th>
-            <th>Duration</th> */}
+            <th>Duration</th>
             <td>Edit</td>
             <td>Delete</td>
           </tr>
@@ -68,16 +74,15 @@ if (isLoadingUser) return <p>Loading...</p>; */
             <tr key={song.id}>
               <td className="box-editpage">{song.trackName} </td>
 
-              {/* <td className="box-editpage">{song.artistName}</td>
+              <td className="box-editpage">{song.artistName}</td>
               <td className="box-editpage"> {song.albumName}</td>
-              <td className="box-editpage">{song.duration}</td> */}
+              <td className="box-editpage">{song.duration}</td>
               <td>{<EditTrack id={song.id} />}</td>
               <td>{<DeleteTrack id={song.id} />}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      ) : <p>There are no tracks in your library.</p> }
     </>
   ) : (
     <>You must be logged in to view tracks.</>
