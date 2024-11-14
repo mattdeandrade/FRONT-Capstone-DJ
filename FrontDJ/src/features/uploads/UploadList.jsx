@@ -50,7 +50,8 @@ if (isLoadingUser) return <p>Loading...</p>; */
     return (
       <>
         {" "}
-        <p>There are no uploads in your library.</p> <AddUpload />
+        <p>There are no uploads in your library.</p>
+        <AddUpload />
       </>
     );
   }
