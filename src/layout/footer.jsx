@@ -5,7 +5,7 @@ import "./Footer.css";
 
 export function Footer() {
   const navigate = useNavigate();
-
+  //capitalized F in footer
   return (
     <footer>
       <div className="footContent">
