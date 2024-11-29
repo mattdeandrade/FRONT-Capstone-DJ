@@ -15,7 +15,7 @@ function AuthForm() {
 
   const [login, { error: loginError }] = useLoginMutation();
   const [register, { error: registerError }] = useRegisterMutation();
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,7 +31,9 @@ function AuthForm() {
       await authMethod(credentials).unwrap();
       navigate("/");
     } catch (error) {
+      console.error("Auth error:", error);
       console.error(error);
+       setErrorMessage(error.data?.message || "An error occurred. Please try again.");
     }
   };
 
@@ -93,7 +95,8 @@ function AuthForm() {
       <a href="#" onClick={() => setIsLogin(!isLogin)}>
         {altCopy}
       </a>
-      {isLogin && loginError && <p role="alert">{loginError.message}</p>}
+      {isLogin && errorMessage && <p role="alert">{errorMessage}</p>}
+    
       {!isLogin && registerError && <p role="alert">{registerError.message}</p>}
     </>
   );
